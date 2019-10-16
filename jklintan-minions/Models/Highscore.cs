@@ -25,11 +25,10 @@ namespace jklintan_minions.Models
                     match.Groups[3],
                     match.Groups[5],
                     match.Groups[1],
-                    match.Groups[4],
-                    match.Groups[2]
+                    match.Groups[2],
+                    match.Groups[4]
                 );
             }
-            Console.WriteLine(connString);
             options.UseNpgsql(connString);
         }
 
