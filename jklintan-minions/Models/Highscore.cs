@@ -29,7 +29,7 @@ namespace jklintan_minions.Models
                     match.Groups[2]
                 );
             }
-
+            Console.WriteLine(connString);
             options.UseNpgsql(connString);
         }
 
