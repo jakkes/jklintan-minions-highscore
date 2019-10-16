@@ -21,7 +21,7 @@ namespace jklintan_minions.Controllers
         public ActionResult<List<Highscore>> Index() {
             using (var db = new HighscoreContext()) {
                 return db.Highscores
-                    .OrderBy(highscore => highscore.Score)
+                    .OrderByDescending(highscore => highscore.Score).ThenBy(highscore => highscore.AcquriedAt)
                     .Take(10).ToList();
             }
         }
@@ -38,8 +38,8 @@ namespace jklintan_minions.Controllers
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (!string.IsNullOrEmpty(_authKey)) {
-                if (context.HttpContext.Request.Headers.ContainsKey("auth-key")) {
-                    if (context.HttpContext.Request.Headers["auth-key"] == _authKey) {
+                if (context.HttpContext.Request.Headers.ContainsKey("auth")) {
+                    if (context.HttpContext.Request.Headers["auth"] == _authKey) {
                         base.OnActionExecuting(context);
                         return;
                     }

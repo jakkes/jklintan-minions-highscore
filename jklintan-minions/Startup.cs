@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using jklintan_minions.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace jklintan_minions
 {
     public class Startup
@@ -25,6 +28,10 @@ namespace jklintan_minions
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            } else {
+                if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("HTTP_AUTH_KEY"))) {
+                    throw new ArgumentException("Cannot run without HTTP_AUTH_KEY in production!!");
+                }
             }
 
             app.UseRouting();
@@ -35,6 +42,8 @@ namespace jklintan_minions
                     name: "default",
                     pattern: "{controller=highscores}/{action=Index}");
             });
+
+            new HighscoreContext().Database.Migrate();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using jklintan_minions.Models;
@@ -9,9 +10,10 @@ using jklintan_minions.Models;
 namespace jklintan_minions.Migrations
 {
     [DbContext(typeof(HighscoreContext))]
-    partial class HighscoreContextModelSnapshot : ModelSnapshot
+    [Migration("20191016135740_maybefixedit")]
+    partial class maybefixedit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
