@@ -21,7 +21,7 @@ namespace jklintan_minions.Models
             var match = connectionString.Match(connString);
             if (match.Success) {
                 connString = string.Format(
-                    "Host={};Database={};Username={};Password={};Port={}",
+                    "Host={0};Database={1};Username={2};Password={3};Port={4}",
                     match.Groups[3],
                     match.Groups[5],
                     match.Groups[1],
