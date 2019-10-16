@@ -5,4 +5,4 @@ COPY . .
 
 RUN dotnet build -c Release -o build
 
-ENTRYPOINT [ "dotnet" "./build/jklintan_minions.dll"]
+CMD [ "dotnet" "./build/jklintan-minions.dll"]
